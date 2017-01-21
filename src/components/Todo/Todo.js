@@ -34,6 +34,10 @@ class Todo extends Component {
     this.props.actions.changeStatus(id, this.props.todo.items);
   }
 
+  onEditItem(item) {
+    this.props.actions.editItem(item, this.props.todo.items);
+  }
+
   render() {
     if (this.props.todo.loading) {
       return <h5 className="text-center">Loading Todo Lists...</h5>;
@@ -50,6 +54,7 @@ class Todo extends Component {
           items={this.props.todo.items}
           onItemClick={id => this.onChangeStatus(id)}
           onRemoveItem={id => this.onRemoveItem(id)}
+          onEditItem={item => this.onEditItem(item)}
         />
       </Col>
     );

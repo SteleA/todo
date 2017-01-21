@@ -11,6 +11,10 @@ export default props => (
           { ...item }
           onItemClick={props.onItemClick}
           onRemoveItem={props.onRemoveItem}
+          onChange={(i) => {
+            const newItem = Object.assign({}, item, { item: i });
+            props.onEditItem(newItem);
+          }}
         />)}
    </ListGroup>
 );

@@ -4,6 +4,7 @@ import db from '../config';
 
 export const GET_ITEMS = 'TodoList/GET_ITEMS';
 export const ADD_ITEM = 'TodoList/ADD_ITEM';
+export const EDIT_ITEM = 'TodoList/EDIT_ITEM';
 export const CHANGE_ITEM_STATUS = 'TodoList/CHANGE_ITEM_STATUS';
 export const REMOVE_ITEM = 'TodoList/REMOVE_ITEM';
 
@@ -35,6 +36,23 @@ export const addItem = createAction(ADD_ITEM, (item, items) => {
     items: [...items],
     error,
   }));
+});
+
+export const editItem = createAction(EDIT_ITEM, (item, items) => {
+  return db.ref(item.id).update(item)
+    .then(() => {
+      const newItems = items.slice();
+      const itemIndex = _.findIndex(items, { id: item.id });
+      newItems[itemIndex] = item;
+      return {
+        items: newItems,
+        error: false,
+      };
+    })
+    .catch(error => ({
+      items: [...items],
+      error,
+    }));
 });
 
 export const changeStatus = createAction(CHANGE_ITEM_STATUS, (id, items) => {
@@ -70,6 +88,7 @@ const defaultState = {
 export default createReducer(defaultState, {
   [GET_ITEMS]: state => state,
   [ADD_ITEM]: state => state,
+  [EDIT_ITEM]: state => state,
   [CHANGE_ITEM_STATUS]: state => state,
   [REMOVE_ITEM]: state => state,
 });
@@ -77,6 +96,7 @@ export default createReducer(defaultState, {
 export const actions = {
   getItems,
   addItem,
+  editItem,
   changeStatus,
   removeItem,
 };
