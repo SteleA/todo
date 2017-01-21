@@ -1,0 +1,19 @@
+.todo {
+  .todo-list {
+    .todo-list-item {
+      &:active, &:focus {
+        background: white;
+      }
+      &.status-completed {
+        background: #f3f3f3;
+        .todo-list-item-name {
+          text-decoration: line-through;
+        }
+      }
+      .todo-list-item-name {
+        padding: 3px;
+        display: inline-block;
+      }
+    }
+  }
+}
