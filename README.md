@@ -11,11 +11,16 @@ App will run at localhost:3000
 ```
 
 ### How to use
-*Add item* - Add name of todo item in input and press enter.
-*Edit item* - Click on name to edit name. And press enter to save changes.
-*Mark Done* - Click on Done link right of item name.
-*Mark Undone* - Appears when item is is Done state. Click on Undo.
-*Delete item* - Appears when item is is Done state. Click on Delete item.
+##### Add item
+Add name of todo item in input and press enter.
+##### Edit item
+Click on name to edit name. And press enter to save changes.
+##### Mark Done
+Click on Done link right of item name.
+##### Mark Undone
+Appears when item is is Done state. Click on Undo.
+##### Delete item
+Appears when item is is Done state. Click on Delete item.
 
 ### The good stuff
 * Firebase to persist data
